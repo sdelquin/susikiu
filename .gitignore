@@ -1,0 +1,14 @@
+bower_components
+*.pyc
+db.sqlite3
+.DS_Store
+uploads
+*.log
+*.log.?
+*.db
+uploads
+tmp
+.vscode
+.well_known
+dump.rdb
+.env

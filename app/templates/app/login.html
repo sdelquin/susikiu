@@ -1,0 +1,29 @@
+{% extends "app/base.html" %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <h2>Login</h2>
+            <form role="form" method="post">
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <div class="form-group">
+                      <button id="btn-register" type="submit" class="btn btn-primary">Enviar</button>
+                      <a href="/" id="btn-cancel" role="button" class="btn btn-danger">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4 text-right">
+            <i class="fa fa-arrow-right"></i> <a href="/register/">Crear cuenta</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="remind-credentials col-md-offset-4 col-md-4 text-right">
+            <i class="fa fa-pencil"></i> <a href="/remind_credentials/">He olvidado mis credenciales</a>
+        </div>
+    </div>
+{% endblock content %}

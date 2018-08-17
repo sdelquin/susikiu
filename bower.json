@@ -1,0 +1,24 @@
+{
+  "name": "susikiu",
+  "authors": [
+    "Sergio Delgado Quintero <sdelquin@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "fontawesome#^4.6.3",
+    "jquery-ui": "^1.12.0",
+    "lightbox2": "^2.8.2"
+  }
+}

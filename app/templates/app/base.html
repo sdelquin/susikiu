@@ -1,0 +1,150 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Susikiu</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Sergio Delgado Quintero">
+        <meta name="description" content="Porque la vida es mejor bailando">
+        <meta name="keywords" content="dance salsa bachata baile figuras dancing">
+
+        <meta property="og:title" content="Susikiu" />
+        <meta property="og:site_name" content="Susikiu" />
+        <meta property="og:description" content="Porque la vida es mejor bailando" />
+        <meta property="og:image" content="https://susikiu.es{% static 'app/images/susikiu_logo_62.png' %}" />
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'app/images/favicon.png' %}"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet">
+        <link href="{% static 'app/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css' %}" rel="stylesheet"/>
+        <link href="{% static 'app/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+        <link href="{% static 'app/bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet"/>
+        <link href="{% static 'app/bower_components/lightbox2/dist/css/lightbox.min.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/app.css' %}" rel="stylesheet"/>
+        {% block css %}
+        {% endblock css %}
+
+        {% if not debug %}
+            {% include "app/ganalytics.html" %}
+        {% endif %}
+    </head>
+    <body>
+        {% if not index %}
+            {% if request.user.is_authenticated %}
+
+                <nav class="navbar navbar-inverse">
+                    <div class="container">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a class="navbar-brand" data-lightbox="logo-big" href="{% static 'app/images/susikiu_logo_600.png' %}"><img src="{% static 'app/images/susikiu_logo_62.png' %}"/></a>
+                            </li>
+                            <li class="section-nav" id="video-section-nav" data-toggle="tooltip" data-placement="bottom" title="Vídeos">
+                                <a href="{% url 'videos' %}">
+                                    <i class="fa fa-video-camera"></i>
+                                </a>
+                            </li>
+                            <li class="section-nav" id="users-section-nav" data-toggle="tooltip" data-placement="bottom" title="Usuarios">
+                                <a href="{% url 'users' %}">
+                                    <i class="fa fa-users"></i>
+                                </a>
+                            </li>
+
+                            {% block header %}
+                            {% endblock header %}
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-spotify"></i> Listas
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a target="_blank" href="{{ bachata_spotify_list }}">Bachata</a></li>
+                                    <li><a target="_blank" href="{{ salsa_spotify_list }}">Salsa</a></li>
+                                </ul>
+                            </li>
+                            <li class="section-nav dropdown" id="myuser-section-nav">
+                                <a href="#"
+                                    class="dropdown-toggle avatar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {% if request.user.is_superuser %}
+                                        <img src="{% static 'app/images/administrator.png' %}"/>
+                                    {% else %}
+                                        <img class="{{ my_enduser.avatar|yesno:'crop-avatar,,' }}" src="{{ my_enduser.get_avatar_url }}"/>
+                                    {% endif %}
+                                    {% if selected_my_likes == "my" %}
+                                        <i class="fa fa-filter"></i>
+                                    {% endif %}
+                                    {{ request.user.first_name }}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% if request.user.is_superuser %}
+                                        <li><a href="/admin/" target="_blank"><i class="fa fa-cog"></i> Base de datos</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'edit_profile' %}"><i class="fa fa-user"></i> Perfil</span></a></li>
+                                        <li>
+                                            {% if selected_my_likes == "my" %}
+                                                <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/!/{{ selected_search|default:'' }}/">
+                                            {% else %}
+                                                <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/my/{{ selected_search|default:'' }}/">
+                                            {% endif %}
+                                            <i class="fa fa-heart"></i>
+                                            Mis favoritos
+                                            {% if selected_my_likes == "my" %}
+                                                <i class="fa fa-check"></i>
+                                            {% endif %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Salir</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            {% else %}
+                <div class="text-center header">
+                    <div class="header-title">
+                        <a href="/">
+                            <img class="logo" src="{% static 'app/images/susikiu_logo_62.png' %}"></img>
+                            Susikiu
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+
+        <div class="container">
+        {% endif %}
+
+            <div class="content">
+                {% block content %}
+                {% endblock content %}
+            </div>
+
+        {% if not index %}
+        </div>
+
+        <div class="text-center footer">
+            <a href="http://codelia.net">Hecho con <i class="fa fa-heart-o love-icon"></i> por Codelia</a><br>
+            <i class="fa fa-envelope-o"></i> info@susikiu.es
+        </div>
+        {% endif %}
+
+        <script src="{% static 'app/bower_components/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'app/bower_components/jquery-ui/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'app/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'app/bower_components/lightbox2/dist/js/lightbox.min.js' %}"></script>
+        <script src="{% static 'app/js/app.js' %}"></script>
+        
+        <script type="text/javascript"> 
+            {% block js %}
+            {% endblock js %}
+        </script>
+    </body>
+</html>

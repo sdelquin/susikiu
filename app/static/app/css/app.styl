@@ -1,0 +1,256 @@
+TEXT_COLOR = #4C4C4C
+TEXT_RGB_COLOR = 76, 76, 76
+FOOTER_HEIGHT = 60px
+BG_COLOR1 = #FFCD82
+BG_COLOR2 = #4d9a32
+BG_COLOR3 = #2f5a27
+BG_COLOR4 = 122, 175, 82
+BG_GRAY1 = #7F7F7F
+DIFFICULTY1_COLOR = #af9950
+DIFFICULTY2_COLOR = #72999a
+DIFFICULTY3_COLOR = #71324b
+
+border-radius(n)
+    -webkit-border-radius n
+    -moz-border-radius n
+
+clip-img(n)
+    -webkit-clip-path: circle(n at n n)
+    clip-path: circle(n at n n)
+
+
+html
+    position: relative
+    min-height: 100%
+
+body
+    background: url("/static/app/images/bg_pattern.png") repeat
+    color: TEXT_COLOR
+    margin-bottom: FOOTER_HEIGHT
+
+.content
+    padding-bottom: 0
+
+for i in range(1, 6)
+    h{i}
+        font-family: "Fjalla One", serif
+        text-decoration: underline
+        margin-bottom: 20px
+        padding: 0
+
+.header
+    background: rgba(TEXT_RGB_COLOR, .2)
+    border-bottom: 1px solid #808080
+    margin-bottom: 25px
+    a
+        text-decoration: none
+        color: TEXT_COLOR
+    .header-title
+        font-family: "Niconne", cursive
+        font-size: 50px
+        padding: 10px
+
+.logo
+    vertical-align: -25%
+
+    .header &
+        vertical-align: -20%
+        
+.footer
+    position: absolute
+    right: 0
+    bottom: 0
+    left: 0
+    padding: 1rem
+    text-align: center
+    height: FOOTER_HEIGHT
+    background: rgba(TEXT_RGB_COLOR, .2)
+    color: TEXT_COLOR
+
+    a
+        color: TEXT_COLOR
+
+.love-icon
+    color: red
+
+.remind-credentials
+    margin-top: 30px
+
+.navbar
+    border-radius: 0
+    font-size: 12pt
+    margin-bottom: 50px
+    .avatar
+        img
+            width: 30px
+
+
+.dropdown-menu li a:hover
+    background-color: BG_COLOR1
+
+.video-thumbnail
+    margin-top: 10px
+    padding: 5px
+    background-color: rgba(255, 255, 255, 0.75)
+    display: inline-block
+    border-radius(10px)
+    color: white
+    font-weight: bold
+    
+    .video-title
+        background-color: BG_COLOR2
+        padding-left: 5px
+        padding-right: 5px
+        margin-bottom: 5px
+        border-radius(5px)
+    
+    img
+        width: 175px
+    
+    &:hover
+        transition background-color .5s
+        background-color: rgba(0, 0, 0, 0.45)
+        .info
+            transition color .5s
+            color: white
+    
+    .info
+        color: BG_GRAY1
+        font-size: 12px
+        font-weight: bold
+        span
+            margin-right: 10px
+        .counter
+            float: right
+
+.admin-video
+    float: right
+
+.previous-video
+    position: absolute
+    z-index: 20
+    top: 40%
+    font-size: 60px
+    a
+        color: white
+        opacity: .3
+        &:hover
+            transition opacity .5s
+            opacity: 1
+
+.next-video
+    position: absolute
+    z-index: 20
+    top: 40%
+    right: 15px
+    font-size: 60px
+    a
+        color: white
+        opacity: .3
+        &:hover
+            transition opacity .5s
+            opacity: 1
+
+.difficulty-level1
+    color: DIFFICULTY1_COLOR
+    .video-title
+        color: white
+        background-color: DIFFICULTY1_COLOR
+
+.difficulty-level2
+    color: DIFFICULTY2_COLOR
+    .video-title
+        color: white
+        background-color: DIFFICULTY2_COLOR
+
+.difficulty-level3
+    color: DIFFICULTY3_COLOR
+    .video-title
+        color: white
+        background-color: DIFFICULTY3_COLOR
+
+.fa-filter
+    color: BG_COLOR1
+
+i.in-red
+    color: red
+
+#video-like-btn
+    font-size: 20px
+    &:hover
+        color: red
+    
+#video-dislike-btn
+    font-size: 20px
+    color: red
+
+.dancer-search
+    display: inline-block
+
+.error-block
+    .error-title
+        font-size: 30px
+        margin-bottom: 40px
+        display: inline-block
+    img
+        width: 100%
+    .error-message
+        margin-top: 20px
+
+a.dropdown-toggle.avatar
+        padding-top: 12px
+        padding-bottom: 8px
+
+.section-title
+    font-family: "Fjalla One", serif
+    font-size: 35px
+    padding-bottom: 10px
+
+.crop-avatar
+    clip-img 50%
+
+.enduser
+    margin-top: 10px
+    padding-top: 5px
+    padding-bottom: 5px
+    img
+        width: 100px
+    .name
+        font-family: "Fjalla One"
+        font-size: 20px
+        margin-top: 10px
+    a
+        color: TEXT_COLOR
+    .extra-info
+        font-size: 14px
+        font-family: monospace
+    &:hover
+        transition background-color .5s
+        transition color .25s
+        background-color: rgba(0, 0, 0, 0.45)
+        .name, .extra-info
+            color: white
+        border-radius(5px)
+        a
+            text-decoration: none
+                        
+.avatar
+    width: 100%
+
+.username
+    font-family: monospace
+
+.social-networks
+    a
+        margin-right: 15px
+
+.emoji
+    margin-right: 10px
+
+.public-profile-link
+    margin-top: 30px
+    font-size: 16px
+    text-align: center
+
+.edit-profile-icon
+    font-size: 26px

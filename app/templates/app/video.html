@@ -1,0 +1,117 @@
+{% extends "app/base.videos.html" %}
+{% load staticfiles %}
+{% load app_extras %}
+
+{% block js %}
+    {{ block.super }}
+    var already_liked = "{{ already_liked }}";
+{% endblock js %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="section-title">{{ video.title }}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 text-center">
+            <span class="previous-video">
+                <a href="{% url 'video' previous_video_id %}"><i class="fa fa-chevron-left"></i></a>
+            </span>
+            <iframe
+                width="100%"
+                height="480"
+                src="
+                {% if debug %}
+                    {{ video.debug_embed_url }}
+                {% else %}
+                    {{ video.embed_url }}
+                {% endif %}
+                "
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <span class="next-video">
+                <a href="{% url 'video' next_video_id %}"><i class="fa fa-chevron-right"></i></a>
+            </span>
+        </div>
+        <div class="col-md-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <i class="fa fa-calendar"></i>
+                    {{ video.recorded }}
+                    {% if request.user.is_superuser %}
+                        <span class="admin-video">
+                            <a target="_blank" href="{% url 'admin:app_video_change' video.id %}">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                        </span>
+                    {% endif %}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa fa-clock-o"></i>
+                    {{ video.duration_string }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa fa-eye"></i>
+                    {{ video.views_count }}
+                    &nbsp;&nbsp;&nbsp;
+                    <i id="likes-heart" class="fa fa-heart" data-toggle="tooltip" data-placement="left" title="{% for l in video_likes %}{{ l.get_fullname }}<br/>{% endfor %}" data-html="true"></i>
+                    <span id="video_likes_count">{{ video.likes_count }}</span>
+                    &nbsp;&nbsp;&nbsp;
+                    {% if not request.user.is_superuser %}
+                        <a id="video-dislike-btn" href="{% url 'video_affinity' video.id 'dislike' %}"><i class="fa fa-heart" data-toggle="tooltip" data-placement="top" title="Deshacer me gusta"></i></a>
+                        <a id="video-like-btn" href="{% url 'video_affinity' video.id 'like' %}"><i class="fa fa-heart-o" data-toggle="tooltip" data-placement="top" title="Me gusta"></i></a>
+                    {% endif %}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa fa-line-chart" data-toggle="tooltip" data-placement="left" title="Nivel de baile"></i>
+                    <a href="/videos/filter/{{ video.dancing_level.id }}/!/!/!/!//">{{ video.dancing_level }}</a>
+                </li>
+                <li class="list-group-item">
+                    <i class="fa fa-spinner" data-toggle="tooltip" data-placement="left" title="Estilo de baile"></i>
+                    <a href="/videos/filter/!/{{ video.dancing_style.id }}/!/!/!//">{{ video.dancing_style }}</a>
+                </li>
+                <li class="list-group-item">
+                    <i class="fa fa-fire" data-toggle="tooltip" data-placement="left" title="Nivel de dificultad"></i>
+                    <a href="/videos/filter/!/!/{{ video.difficulty_level.id }}/!/!//">{{ video.difficulty_level }}</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <span class="difficulty-level{{ video.difficulty_level.level }}">
+                    {% for i in difficulty_levels %}
+                        {% if forloop.counter <= video.difficulty_level.level %}
+                            <i class="fa fa-circle"></i>
+                        {% else %}
+                            <i class="fa fa-circle-o"></i>
+                        {% endif %}
+                    {% endfor %}
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <i class="fa fa-male"></i>
+                        <a href="/videos/filter/!/!/!/!/!/{{ video.dancer1 }}/">{{ video.dancer1 }}</a>
+                    {% if video.dancer2 %}
+                        &nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-female"></i>
+                        <a href="/videos/filter/!/!/!/!/!/{{ video.dancer2 }}/">{{ video.dancer2 }}</a>
+                    {% endif %}
+                </li>
+                {% if video.song %}
+                    <li class="list-group-item">
+                        <i class="fa fa-music"></i>
+                        {{ video.song.title }} - {{ video.song.artist }}
+                        <br/>
+                        {% if video.song.spotify_url %}
+                            <i class="fa fa-spotify"></i>
+                            <a target="_blank" href="{{ video.song.spotify_url }}">Spotify</a>
+                            &nbsp;&nbsp;&nbsp;
+                        {% endif %}
+                        {% if video.song.youtube_url %}
+                            <i class="fa fa-youtube-play"></i>
+                            <a target="_blank" href="{{ video.song.youtube_url }}">Youtube</a>
+                        {% endif %}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

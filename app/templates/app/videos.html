@@ -1,0 +1,32 @@
+{% extends "app/base.videos.html" %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+{% block content %}
+    {% include "app/messages.inc.html" %}
+    
+    <div class="row">
+        {% for video in videos %}
+            <div class="col-md-2 col-xs-4">
+                <a href="{% url 'video' video.id %}">
+                <span class="video-thumbnail difficulty-level{{ video.difficulty_level.level }}">
+                    <div class="video-title">{{ video.title | truncatechars:25}}</div>
+                    <img src="{{ video.thumbnail_url }}">
+                    <div class="info">
+                        <div>{{ video.recorded }}</div>
+                        <span><i class="fa fa-eye"></i> {{ video.views_count }}</span>
+                        <span><i class="fa fa-heart"></i> {{ video.likes_count }}</span>
+                        <span class="counter">#{{ forloop.revcounter }}</span>
+                    </div>
+                </span>
+                </a>
+            </div>
+        {% empty %}
+            <div class="col-md-offset-3 col-md-6">
+                <div class="alert alert-info" role="alert">
+                    Lo sentimos. No hay ningún vídeo que mostrar con los filtros y/o criterios de búsqueda establecidos. <a href="{% url 'videos' %}">Pulse aquí para recargar todos los vídeos</a>.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

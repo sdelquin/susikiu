@@ -1,0 +1,290 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  background: url("/static/app/images/bg_pattern.png") repeat;
+  color: #4c4c4c;
+  margin-bottom: 60px;
+}
+.content {
+  padding-bottom: 0;
+}
+h1 {
+  font-family: "Fjalla One", serif;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  padding: 0;
+}
+h2 {
+  font-family: "Fjalla One", serif;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  padding: 0;
+}
+h3 {
+  font-family: "Fjalla One", serif;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  padding: 0;
+}
+h4 {
+  font-family: "Fjalla One", serif;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  padding: 0;
+}
+h5 {
+  font-family: "Fjalla One", serif;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  padding: 0;
+}
+h6 {
+  font-family: "Fjalla One", serif;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  padding: 0;
+}
+.header {
+  background: rgba(76,76,76,0.2);
+  border-bottom: 1px solid #808080;
+  margin-bottom: 25px;
+}
+.header a {
+  text-decoration: none;
+  color: #4c4c4c;
+}
+.header .header-title {
+  font-family: "Niconne", cursive;
+  font-size: 50px;
+  padding: 10px;
+}
+.logo {
+  vertical-align: -25%;
+}
+.header .logo {
+  vertical-align: -20%;
+}
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  height: 60px;
+  background: rgba(76,76,76,0.2);
+  color: #4c4c4c;
+}
+.footer a {
+  color: #4c4c4c;
+}
+.love-icon {
+  color: #f00;
+}
+.remind-credentials {
+  margin-top: 30px;
+}
+.navbar {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  font-size: 12pt;
+  margin-bottom: 50px;
+}
+.navbar .avatar img {
+  width: 30px;
+}
+.dropdown-menu li a:hover {
+  background-color: #ffcd82;
+}
+.video-thumbnail {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: rgba(255,255,255,0.75);
+  display: inline-block;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+.video-thumbnail .video-title {
+  background-color: #4d9a32;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+.video-thumbnail img {
+  width: 175px;
+}
+.video-thumbnail:hover {
+  transition: background-color 0.5s;
+  background-color: rgba(0,0,0,0.45);
+}
+.video-thumbnail:hover .info {
+  transition: color 0.5s;
+  color: #fff;
+}
+.video-thumbnail .info {
+  color: #7f7f7f;
+  font-size: 12px;
+  font-weight: bold;
+}
+.video-thumbnail .info span {
+  margin-right: 10px;
+}
+.video-thumbnail .info .counter {
+  float: right;
+}
+.admin-video {
+  float: right;
+}
+.previous-video {
+  position: absolute;
+  z-index: 20;
+  top: 40%;
+  font-size: 60px;
+}
+.previous-video a {
+  color: #fff;
+  opacity: 0.3;
+}
+.previous-video a:hover {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+.next-video {
+  position: absolute;
+  z-index: 20;
+  top: 40%;
+  right: 15px;
+  font-size: 60px;
+}
+.next-video a {
+  color: #fff;
+  opacity: 0.3;
+}
+.next-video a:hover {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+.difficulty-level1 {
+  color: #af9950;
+}
+.difficulty-level1 .video-title {
+  color: #fff;
+  background-color: #af9950;
+}
+.difficulty-level2 {
+  color: #72999a;
+}
+.difficulty-level2 .video-title {
+  color: #fff;
+  background-color: #72999a;
+}
+.difficulty-level3 {
+  color: #71324b;
+}
+.difficulty-level3 .video-title {
+  color: #fff;
+  background-color: #71324b;
+}
+.fa-filter {
+  color: #ffcd82;
+}
+i.in-red {
+  color: #f00;
+}
+#video-like-btn {
+  font-size: 20px;
+}
+#video-like-btn:hover {
+  color: #f00;
+}
+#video-dislike-btn {
+  font-size: 20px;
+  color: #f00;
+}
+.dancer-search {
+  display: inline-block;
+}
+.error-block .error-title {
+  font-size: 30px;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+.error-block img {
+  width: 100%;
+}
+.error-block .error-message {
+  margin-top: 20px;
+}
+a.dropdown-toggle.avatar {
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+.section-title {
+  font-family: "Fjalla One", serif;
+  font-size: 35px;
+  padding-bottom: 10px;
+}
+.crop-avatar {
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+}
+.enduser {
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.enduser img {
+  width: 100px;
+}
+.enduser .name {
+  font-family: "Fjalla One";
+  font-size: 20px;
+  margin-top: 10px;
+}
+.enduser a {
+  color: #4c4c4c;
+}
+.enduser .extra-info {
+  font-size: 14px;
+  font-family: monospace;
+}
+.enduser:hover {
+  transition: background-color 0.5s;
+  transition: color 0.25s;
+  background-color: rgba(0,0,0,0.45);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+.enduser:hover .name,
+.enduser:hover .extra-info {
+  color: #fff;
+}
+.enduser:hover a {
+  text-decoration: none;
+}
+.avatar {
+  width: 100%;
+}
+.username {
+  font-family: monospace;
+}
+.social-networks a {
+  margin-right: 15px;
+}
+.emoji {
+  margin-right: 10px;
+}
+.public-profile-link {
+  margin-top: 30px;
+  font-size: 16px;
+  text-align: center;
+}
+.edit-profile-icon {
+  font-size: 26px;
+}

@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==1.9.6"
+celery = "==3.1.23"
+redis = "==2.10.5"
+django-bootstrap-form = "==3.2.1"
+django-import-export = "==0.4.5"
+mysqlclient = "*"
+dateparser = "*"
+pillow = "==3.3.0"
+requests = "*"
+prettyconf = "*"
+
+[dev-packages]
+ipython = "*"
+"flake8" = "*"
+rope = "*"
+"fabric3" = "*"
+
+[requires]
+python_version = "3.6"

@@ -1,0 +1,36 @@
+{% extends "app/base.html" %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+{% block js %}
+    active_section_nav = "myuser-section-nav";
+{% endblock js %}
+
+{% block content %}
+    {% include "app/messages.inc.html" %}
+
+    <div class="row">
+        <div class="col-md-offset-2 col-md-5">
+            <div class="section-title">
+                <i class="fa fa-user"></i>
+                Perfil
+            </div>
+            <form role="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <div class="form-group">
+                      <button id="btn-register" type="submit" class="btn btn-primary">Guardar</button>
+                      <a href="{% url 'videos' %}" id="btn-cancel" role="button" class="btn btn-danger">Cancelar</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-offset-1 col-md-3">
+            <img data-toggle="popover" data-content="Para cambiar el avatar usa el campo <strong>Foto de perfil</strong> del formulario" data-html="true" data-placement="bottom" class="avatar {{ my_enduser.avatar|yesno:'crop-avatar,,' }}" src="{{ my_enduser.get_avatar_url }}"/>
+            <div class="public-profile-link">
+                <a href="{% url 'profile' my_enduser.user.username %}" class="btn btn-default" role="button">
+                    Ver mi perfil público
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

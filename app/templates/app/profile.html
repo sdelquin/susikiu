@@ -1,0 +1,125 @@
+{% extends "app/base.users.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-offset-2 col-md-5">
+            <div class="section-title">
+                {{ enduser.get_fullname }}
+                {% if my_enduser.id == enduser.id %}
+                    <a href="{% url 'edit_profile' %}">
+                        <i class="edit-profile-icon fa fa-gear"></i>
+                    </a>
+                {% endif %}
+            </div>
+            <div class="panel panel-default">
+                <ul class="list-group">
+                    <li class="list-group-item username">
+                        <i class="fa fa-user"></i>
+                        {{ enduser.user.username }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fa fa-calendar"></i>
+                        {{ joined_days }} día{{ joined_days|pluralize }} en Susikiu
+                    </li>
+                    {% if enduser.dancing_level %}
+                        <li class="list-group-item">
+                            <i class="fa fa-line-chart"></i>
+                            <a href="/videos/filter/{{ enduser.dancing_level.id }}/!/!/!/!//">{{ enduser.dancing_level }}</a>
+                        </li>
+                    {% endif %}
+                    {% if enduser.favourite_dancing_style %}
+                        <li class="list-group-item">
+                            <i class="fa fa-spinner"></i>
+                            <a href="/videos/filter/!/{{ enduser.favourite_dancing_style.id }}/!/!/!//">{{ enduser.favourite_dancing_style }}</a>
+                        </li>
+                    {% endif %}
+                    <li class="list-group-item">
+                    {% if enduser.teacher %}
+                        <i class="fa fa-graduation-cap"></i>
+                        Profesor/a
+                    {% else %}
+                        <i class="fa fa-book"></i>
+                        Alumno/a
+                    {% endif %}
+                    </li>
+                    {% if enduser.date_of_birth %}
+                        <li class="list-group-item">
+                            <i class="fa fa-birthday-cake"></i>
+                            {{ enduser.date_of_birth }}
+                            ({{ age }} años)
+                        </li>
+                    {% endif %}
+                    {% if twitter_url or facebook_url or snapchat_url or instagram_url %}
+                        <li class="list-group-item social-networks">
+                            {% if twitter_url %}
+                                <a target="_blank" href="{{ twitter_url }}">
+                                    <i class="fa fa-twitter"></i>
+                                    twitter
+                                </a>
+                            {% endif %}
+                            {% if facebook_url %}
+                                <a target="_blank" href="{{ facebook_url }}">
+                                    <i class="fa fa-facebook"></i>
+                                    facebook
+                                </a>
+                            {% endif %}
+                            {% if snapchat_url %}
+                                <a target="_blank" href="{{ snapchat_url }}">
+                                    <i class="fa fa-snapchat-ghost"></i>
+                                    snapchat
+                                </a>
+                            {% endif %}
+                            {% if instagram_url %}
+                                <a target="_blank" href="{{ instagram_url }}">
+                                    <i class="fa fa-instagram"></i>
+                                    instagram
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            {% if enduser.why_dance %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">¿Por qué bailas?</div>
+                    <div class="panel-body">
+                        <p>
+                            <i class="fa fa-quote-right"></i>
+                            {{ enduser.why_dance }}
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if enduser.bio %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Bio. Cuéntanos algo sobre ti.</div>
+                    <div class="panel-body">
+                        <p>
+                            <i class="fa fa-quote-right"></i>
+                            {{ enduser.bio|linebreaksbr }}
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+            {% if liked_videos %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Vídeos que te han gustado.</div>
+                    <div class="panel-body">
+                        {% for v in liked_videos %}
+                            <a href="{% url 'video' v.id %}">{{ v }}</a>
+                            {% if not forloop.last %}
+                                <strong>·</strong>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-offset-1 col-md-3">
+            <a data-lightbox="profile-image" href="{{ enduser.get_avatar_url }}"><img class="avatar {{ enduser.avatar|yesno:'crop-avatar,,' }}" src="{{ enduser.get_avatar_url }}"/></a>
+        </div>
+    </div>
+{% endblock content %}

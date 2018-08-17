@@ -1,0 +1,60 @@
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r"^$",
+        views.index,
+        name="index"),
+    url(r"^login/$",
+        views.login,
+        name="login"),
+    url(r"^logout/$",
+        views.logout,
+        name="logout"),
+    url(r"^register/$",
+        views.register,
+        name="register"),
+    url(r"^register/(?P<confirmation_id>.*)/$",
+        views.confirm_register,
+        name="confirm_register"),
+    url(r"^remind_credentials/$",
+        views.remind_credentials,
+        name="remind_credentials"),
+    url(r"^reset_password/(?P<reset_id>.*)/$",
+        views.reset_password,
+        name="reset_password"),
+    url(r"^videos/$",
+        views.videos,
+        name="videos"),
+    url(r"^videos/filter/"
+        "(?P<dancing_level_id>\d+|!)/"
+        "(?P<dancing_style_id>\d+|!)/"
+        "(?P<difficulty_level_id>\d+|!)/"
+        "(?P<order_criteria>[+-])?(?P<order_key>[dlvt!])/"
+        "(?P<my_likes>my|!)/"
+        "(?P<search>.*)/$",
+        views.filter_videos,
+        name="filter_videos"),
+    url(r"^video/(?P<video_id>.*)/affinity/(?P<affinity>like|dislike)/$",
+        views.video_affinity,
+        name="video_affinity"),
+    url(r"^video/(?P<video_id>.*)/$",
+        views.video,
+        name="video"),
+    url(r"^edit_profile/$",
+        views.edit_profile,
+        name="edit_profile"),
+    url(r"^users/$",
+        views.users,
+        name="users"),
+    url(r"^users/filter/"
+        "(?P<dancing_level_id>\d+|!)/"
+        "(?P<dancing_style_id>\d+|!)/"
+        "(?P<order_criteria>[+-])?(?P<order_key>[nbj!])/"
+        "(?P<search>.*)/$",
+        views.filter_users,
+        name="filter_users"),
+    url(r"^user/(?P<username>.*)/$",
+        views.profile,
+        name="profile")
+]

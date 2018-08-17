@@ -1,0 +1,30 @@
+{% extends "app/base.users.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="row">
+        {% for enduser in endusers %}
+            <div class="col-md-2 col-xs-4 text-center">
+                <div class="enduser">
+                    <a href="{% url 'profile' enduser.user.username %}">
+                        <div>
+                            <img class="{{ enduser.avatar|yesno:'crop-avatar,,' }}" src="{{ enduser.get_avatar_url }}"/>
+                            <div class="name">
+                                {{ enduser.user.first_name | truncatechars:20 }}
+                            </div>
+                            <div class="extra-info">
+                                {{ enduser.user.username }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-md-offset-3 col-md-6">
+                <div class="alert alert-info" role="alert">
+                    Lo sentimos. No hay ningún usuario que mostrar con los filtros y/o criterios de búsqueda establecidos. <a href="{% url 'users' %}">Pulse aquí para recargar todos los usuarios</a>.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
