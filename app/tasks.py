@@ -1,8 +1,7 @@
-from fabric.contrib import django
-django.settings_module('base.settings')
-from django.conf import settings
-_ = settings.INSTALLED_APPS  # fabric bug: https://goo.gl/167WlO
+import os
 from django.core.mail import EmailMultiAlternatives
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'base.settings'
 
 
 def send_confirmation_account_email(name, url, email):
