@@ -1,13 +1,11 @@
-from celery import shared_task
-from celery.utils.log import get_task_logger
+from fabric.contrib import django
+django.settings_module('base.settings')
+from django.conf import settings
+_ = settings.INSTALLED_APPS  # fabric bug: https://goo.gl/167WlO
 from django.core.mail import EmailMultiAlternatives
 
-logger = get_task_logger(__name__)
 
-
-@shared_task
 def send_confirmation_account_email(name, url, email):
-    logger.info("Sent confirmation account email")
     msg = EmailMultiAlternatives(
         subject="Confirmación de cuenta",
         body="<p>Hola {0},</p>"
@@ -22,9 +20,7 @@ def send_confirmation_account_email(name, url, email):
     msg.send()
 
 
-@shared_task
 def send_remind_credentials_email(username, url, email):
-    logger.info("Sent remind credentials account email")
     msg = EmailMultiAlternatives(
         subject="Recordar credenciales",
         body="<p>Hola,</p>"
@@ -40,9 +36,7 @@ def send_remind_credentials_email(username, url, email):
     msg.send()
 
 
-@shared_task
 def send_new_video_email(video_name, url, emails):
-    logger.info("Sent new video notification email")
     msg = EmailMultiAlternatives(
         subject="Nuevo vídeo en Susikiu",
         body="<p>Hola,</p>"

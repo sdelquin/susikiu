@@ -101,7 +101,8 @@ def register(request):
             id = uuid.uuid1()
             redis_key = "register_{}".format(id)
             settings.REDIS.set(redis_key, json.dumps(form.cleaned_data))
-            send_confirmation_account_email.delay(
+            settings.RQ.enqueue(
+                send_confirmation_account_email,
                 form.cleaned_data.get("first_name"),
                 "http://susikiu.es/register/{}/".format(id),
                 form.cleaned_data.get("email")
@@ -182,7 +183,8 @@ def remind_credentials(request):
             id = uuid.uuid1()
             redis_key = "reset_{}".format(id)
             settings.REDIS.set(redis_key, u.username)
-            send_remind_credentials_email.delay(
+            settings.RQ.enqueue(
+                send_remind_credentials_email,
                 u.username,
                 "http://susikiu.es/reset_password/{}/".format(id),
                 email

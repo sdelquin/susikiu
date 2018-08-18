@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 from django.contrib.messages import constants as message_constants
-import redis
+from redis import Redis
+from rq import Queue
 from prettyconf import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -188,16 +189,8 @@ MESSAGE_TAGS = {
 }
 
 REDIS_PORT = config('REDIS_PORT', cast=config.eval)
-REDIS = redis.StrictRedis(host="localhost", port=REDIS_PORT, db=0)
-
-# CELERY STUFF
-BROKER_URL = "redis://localhost:{}".format(REDIS_PORT)
-CELERY_RESULT_BACKEND = "redis://localhost:{}".format(REDIS_PORT)
-CELERY_ACCEPT_CONTENT = ["application/json"]
-CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_SERIALIZER = "json"
-CELERY_TIMEZONE = TIME_ZONE
-CELERY_IMPORTS = ("app.tasks",)
+REDIS = Redis(host="localhost", port=REDIS_PORT, db=0)
+RQ = Queue(connection=REDIS)
 
 GOOGLE_API = config('GOOGLE_API')
 

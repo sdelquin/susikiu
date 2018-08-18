@@ -326,8 +326,12 @@ class Video(models.Model):
                 "user__email",
                 flat=True)
             )
-            print('voy a llamar a la función')
-            send_new_video_email.delay(self.title, url, emails)
+            settings.RQ.enqueue(
+                send_new_video_email,
+                self.title,
+                url,
+                emails
+            )
 
     @property
     def music(self):

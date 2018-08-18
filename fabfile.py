@@ -15,7 +15,7 @@ def deploy():
         run('bower install')
         run('pipenv run python manage.py collectstatic --noinput')
         run('pipenv run python manage.py migrate')
-        run('supctl restart celery.susikiu')
+        run('supctl restart rq_susikiu')
         run('supctl restart susikiu')
 
 
