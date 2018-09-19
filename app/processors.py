@@ -8,7 +8,7 @@ from .models import EndUser
 def globals(request):
     try:
         enduser = EndUser.objects.get(user=request.user)
-    except EndUser.DoesNotExist:
+    except Exception:
         enduser = None
     return {
         "dancing_styles": DancingStyle.objects.all().order_by("name"),
