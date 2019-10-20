@@ -34,4 +34,4 @@ def download_db():
 
 
 def download_media():
-    local('rsync -rtvu webfaction:~/webapps/susikiu_media/uploads/ uploads/')
+    local('rsync -rtvu webfaction:~/webapps/susikiu_media/ media/')
