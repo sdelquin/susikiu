@@ -14,12 +14,15 @@ requests = "*"
 prettyconf = "*"
 rq = "*"
 psycopg2-binary = "*"
+sendgrid = "==5.6.0"
+sgw = {git = "https://github.com/sdelquin/sgw.git"}
 
 [dev-packages]
 ipython = "*"
-"flake8" = "*"
+flake8 = "*"
 rope = "*"
-"fabric3" = "*"
+fabric3 = "*"
+yapf = "*"
 
 [requires]
 python_version = "3.6"
