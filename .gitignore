@@ -10,4 +10,5 @@ tmp
 .well_known
 dump.rdb
 .env
+static
 media
