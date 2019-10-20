@@ -22,7 +22,7 @@ ipython = "*"
 flake8 = "*"
 rope = "*"
 yapf = "*"
-fabric = "*"
+fabric3 = "*"
 
 [requires]
 python_version = "3.6"
