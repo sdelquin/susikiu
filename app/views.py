@@ -403,19 +403,19 @@ def filter_videos(request,
     videos = Video.objects.filter(
         functools.reduce(
             operator.or_,
-            (Q(title__icontains=s) for s in search_pieces)) |
+            (Q(title__unaccent__icontains=s) for s in search_pieces)) |
         functools.reduce(
             operator.or_,
-            (Q(dancer1__icontains=s) for s in search_pieces)) |
+            (Q(dancer1__unaccent__icontains=s) for s in search_pieces)) |
         functools.reduce(
             operator.or_,
-            (Q(dancer2__icontains=s) for s in search_pieces)) |
+            (Q(dancer2__unaccent__icontains=s) for s in search_pieces)) |
         functools.reduce(
             operator.or_,
-            (Q(song__title__icontains=s) for s in search_pieces)) |
+            (Q(song__title__unaccent__icontains=s) for s in search_pieces)) |
         functools.reduce(
             operator.or_,
-            (Q(song__artist__icontains=s) for s in search_pieces)),
+            (Q(song__artist__unaccent__icontains=s) for s in search_pieces)),
         dancing_level__id__in=dancing_level_ids,
         dancing_style__id__in=dancing_style_ids,
         difficulty_level__id__in=difficulty_level_ids
