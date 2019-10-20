@@ -175,19 +175,16 @@ LOGGING = {
 BGVIDEO_ID = "SmGSu_4bifg"
 ELEBE_TOKEN = config('ELEBE_TOKEN')
 
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = config('EMAIL_PORT', cast=config.eval)
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+SENDGRID_APIKEY = config('SENDGRID_APIKEY')
+SENDGRID_FROM_EMAIL = config('SENDGRID_FROM_EMAIL')
+SENDGRID_FROM_NAME = config('SENDGRID_FROM_NAME')
 
 # in order to take advantage of bootstrap alerts
 MESSAGE_TAGS = {
     message_constants.ERROR: "danger"
 }
 
-REDIS_PORT = config('REDIS_PORT', cast=config.eval)
-REDIS = Redis(host="localhost", port=REDIS_PORT, db=0)
+REDIS = Redis(host="localhost", db=0)
 RQ = Queue(connection=REDIS)
 
 GOOGLE_API = config('GOOGLE_API')
