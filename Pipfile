@@ -5,15 +5,15 @@ name = "pypi"
 
 [packages]
 django = "==1.9.6"
-redis = "==2.10.5"
+redis = "*"
 django-bootstrap-form = "==3.2.1"
 django-import-export = "==0.4.5"
-mysqlclient = "*"
 dateparser = "*"
 pillow = "==3.3.0"
 requests = "*"
 prettyconf = "*"
 rq = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 ipython = "*"
