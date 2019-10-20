@@ -134,10 +134,14 @@ class DancingStyle(models.Model):
 
     @classmethod
     def get_choices(cls):
-        r = [(d.code, d.name) for d in cls.objects.all()]
-        # empty label
-        r.insert(0, ("", "Ninguno"))
-        return r
+        try:
+            r = [(d.code, d.name) for d in cls.objects.all()]
+            # empty label
+            r.insert(0, ("", "Ninguno"))
+        except Exception:
+            return []
+        else:
+            return r
 
 
 class DancingLevel(models.Model):
@@ -161,10 +165,14 @@ class DancingLevel(models.Model):
 
     @classmethod
     def get_choices(cls):
-        r = [(d.code, d.name) for d in cls.objects.all()]
-        # empty label
-        r.insert(0, ("", "Ninguno"))
-        return r
+        try:
+            r = [(d.code, d.name) for d in cls.objects.all()]
+            # empty label
+            r.insert(0, ("", "Ninguno"))
+        except Exception:
+            return []
+        else:
+            return r
 
 
 class DifficultyLevel(models.Model):
