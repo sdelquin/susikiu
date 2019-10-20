@@ -88,9 +88,9 @@
                                         <li><a href="{% url 'edit_profile' %}"><i class="fa fa-user"></i> Perfil</span></a></li>
                                         <li>
                                             {% if selected_my_likes == "my" %}
-                                                <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/!/{{ selected_search|default:'' }}/">
+                                                <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/!/{{ selected_search|default:'!' }}/">
                                             {% else %}
-                                                <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/my/{{ selected_search|default:'' }}/">
+                                                <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/my/{{ selected_search|default:'!' }}/">
                                             {% endif %}
                                             <i class="fa fa-heart"></i>
                                             Mis favoritos

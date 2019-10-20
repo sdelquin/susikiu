@@ -396,6 +396,8 @@ def filter_videos(request,
         elif order_key == "t":
             order_by_field = "{}duration".format(oc)
 
+    if search == '!':
+        search = ''
     search_pieces = search.split()
     if not search_pieces:
         search_pieces = [""]

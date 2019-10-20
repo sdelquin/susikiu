@@ -27,12 +27,12 @@ urlpatterns = [
         views.videos,
         name="videos"),
     url(r"^videos/filter/"
-        "(?P<dancing_level_id>\d+|!)/"
-        "(?P<dancing_style_id>\d+|!)/"
-        "(?P<difficulty_level_id>\d+|!)/"
-        "(?P<order_criteria>[+-])?(?P<order_key>[dlvt!])/"
-        "(?P<my_likes>my|!)/"
-        "(?P<search>.*)/$",
+        r"(?P<dancing_level_id>\d+|!)/"
+        r"(?P<dancing_style_id>\d+|!)/"
+        r"(?P<difficulty_level_id>\d+|!)/"
+        r"(?P<order_criteria>[+-])?(?P<order_key>[dlvt!])/"
+        r"(?P<my_likes>my|!)/"
+        r"(?P<search>.*)/$",
         views.filter_videos,
         name="filter_videos"),
     url(r"^video/(?P<video_id>.*)/affinity/(?P<affinity>like|dislike)/$",

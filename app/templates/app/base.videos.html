@@ -17,9 +17,9 @@
             {% for level in dancing_levels %}
                 <li>
                     {% if level.id|stringformat:'d' == selected_dancing_level_id %}
-                        <a href="/videos/filter/!/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/videos/filter/!/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     {% else %}
-                        <a href="/videos/filter/{{ level.id }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/videos/filter/{{ level.id }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     {% endif %}
                     {{ level }}
                     {% if level.id|stringformat:'d' == selected_dancing_level_id %}
@@ -42,12 +42,12 @@
             {% for style in dancing_styles %}
                 <li>
                     {% if style.id|stringformat:'d' == selected_dancing_style_id %}
-                        <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/!/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/!/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                         {{ style }}
                         <i class="fa fa-check"></i>
                         </a>
                     {% else %}
-                        <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ style.id }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ style.id }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                         {{ style }}
                         </a>
                     {% endif %}
@@ -67,13 +67,13 @@
             {% for level in difficulty_levels %}
                 <li>
                     {% if level.id|stringformat:'d' == selected_difficulty_level_id %}
-                        <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/!/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/!/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                         <i class="fa fa-square difficulty-level{{ level.level }}"></i>
                         {{ level }}
                         <i class="fa fa-check"></i>
                         </a>
                     {% else %}
-                        <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ level.id }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ level.id }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                         <i class="fa fa-square difficulty-level{{ level.level }}"></i>
                         {{ level }}
                         </a>
@@ -93,48 +93,48 @@
         <ul class="dropdown-menu">
             <li>
                 {% if selected_order_key == "d" %}
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/!/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/!/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     Por fecha
                     <i class="fa fa-check"></i>
                     </a>
                 {% else %}
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/-d/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/-d/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     Por fecha
                     </a>
                 {% endif %}
             </li>
             <li>
                 {% if selected_order_key == "l" %}
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/!/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/!/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     Por "me gusta"
                     <i class="fa fa-check"></i>
                     </a>
                 {% else %}
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/-l/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/-l/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     Por "me gusta"
                     </a>
                 {% endif %}
             </li>
             <li>
                 {% if selected_order_key == "v" %}
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/!/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/!/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     Por visualizaciones
                     <i class="fa fa-check"></i>
                     </a>
                 {% else %}
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/-v/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/-v/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     Por visualizaciones
                     </a>
                 {% endif %}
             </li>
             <li>
                 {% if selected_order_key == "t" %}
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/!/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/!/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     Por duración
                     <i class="fa fa-check"></i>
                     </a>
                 {% else %}
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/-t/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/-t/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     Por duración
                     </a>
                 {% endif %}
@@ -142,7 +142,7 @@
             {% if selected_order_key and selected_order_key != "!" %}
                 <li role="separator" class="divider"></li>
                 <li>
-                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ inverted_order_criteria }}{{ selected_order_key }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'' }}/">
+                    <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ inverted_order_criteria }}{{ selected_order_key }}/{{ selected_my_likes|default:'!' }}/{{ selected_search|default:'!' }}/">
                     <i class="fa fa-sort-amount-desc"></i>
                     Invertir orden
                     </a>
@@ -158,7 +158,7 @@
             {% endif %}
             <input id="search-input" name="search" type="text" class="form-control" placeholder="Búsqueda" value="{{ selected_search|default:'' }}">
             {% if selected_search %}
-                <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}//"><i id="clean-search" class="fa fa-times"></i></a>
+                <a href="/videos/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_difficulty_level_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_my_likes|default:'!' }}/!/"><i id="clean-search" class="fa fa-times"></i></a>
             {% endif %}
         </div>
     </form>
