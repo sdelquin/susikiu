@@ -52,6 +52,8 @@ search = function(event) {
   var data, url, url1;
   event.preventDefault();
   data = $("#search-input").val();
+  if (data == "")
+    data = "!";
   url1 = $(this).attr("action");
   url = "" + url1 + data + "/";
   return window.location.href = url;
