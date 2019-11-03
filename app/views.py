@@ -582,6 +582,8 @@ def filter_users(request,
         elif order_key == "j":
             order_by_field = "{}user__date_joined".format(oc)
 
+    if search == '!':
+        search = ''
     search_pieces = search.split()
     if not search_pieces:
         search_pieces = [""]

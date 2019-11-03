@@ -17,9 +17,9 @@
             {% for level in dancing_levels %}
                 <li>
                     {% if level.id|stringformat:'d' == selected_dancing_level_id %}
-                        <a href="/users/filter/!/{{ selected_dancing_style_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/users/filter/!/{{ selected_dancing_style_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_search|default:'!' }}/">
                     {% else %}
-                        <a href="/users/filter/{{ level.id }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/users/filter/{{ level.id }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_search|default:'!' }}/">
                     {% endif %}
                     {{ level }}
                     {% if level.id|stringformat:'d' == selected_dancing_level_id %}
@@ -42,12 +42,12 @@
             {% for style in dancing_styles %}
                 <li>
                     {% if style.id|stringformat:'d' == selected_dancing_style_id %}
-                        <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/!/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/!/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_search|default:'!' }}/">
                         {{ style }}
                         <i class="fa fa-check"></i>
                         </a>
                     {% else %}
-                        <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ style.id }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_search|default:'' }}/">
+                        <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ style.id }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/{{ selected_search|default:'!' }}/">
                         {{ style }}
                         </a>
                     {% endif %}
@@ -66,24 +66,24 @@
         <ul class="dropdown-menu">
             <li>
                 {% if selected_order_key == "n" %}
-                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/!/{{ selected_search|default:'' }}/">
+                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/!/{{ selected_search|default:'!' }}/">
                     Por nombre
                     <i class="fa fa-check"></i>
                     </a>
                 {% else %}
-                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/+n/{{ selected_search|default:'' }}/">
+                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/+n/{{ selected_search|default:'!' }}/">
                     Por nombre
                     </a>
                 {% endif %}
             </li>
             <li>
                 {% if selected_order_key == "b" %}
-                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/!/{{ selected_search|default:'' }}/">
+                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/!/{{ selected_search|default:'!' }}/">
                     Por fecha de nacimiento
                     <i class="fa fa-check"></i>
                     </a>
                 {% else %}
-                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/+b/{{ selected_search|default:'' }}/">
+                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/+b/{{ selected_search|default:'!' }}/">
                     Por fecha de nacimiento
                     </a>
                 {% endif %}
@@ -91,12 +91,12 @@
 
             <li>
                 {% if selected_order_key == "j" %}
-                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/!/{{ selected_search|default:'' }}/">
+                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/!/{{ selected_search|default:'!' }}/">
                     Por fecha de registro
                     <i class="fa fa-check"></i>
                     </a>
                 {% else %}
-                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/+j/{{ selected_search|default:'' }}/">
+                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/+j/{{ selected_search|default:'!' }}/">
                     Por fecha de registro
                     </a>
                 {% endif %}
@@ -105,7 +105,7 @@
             {% if selected_order_key and selected_order_key != "!" %}
                 <li role="separator" class="divider"></li>
                 <li>
-                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ inverted_order_criteria }}{{ selected_order_key }}/{{ selected_search|default:'' }}/">
+                    <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ inverted_order_criteria }}{{ selected_order_key }}/{{ selected_search|default:'!' }}/">
                     <i class="fa fa-sort-amount-desc"></i>
                     Invertir orden
                     </a>
@@ -121,7 +121,7 @@
             {% endif %}
             <input id="search-input" name="search" type="text" class="form-control" placeholder="Búsqueda" value="{{ selected_search|default:'' }}">
             {% if selected_search %}
-                <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}//"><i id="clean-search" class="fa fa-times"></i></a>
+                <a href="/users/filter/{{ selected_dancing_level_id|default:'!' }}/{{ selected_dancing_style_id|default:'!' }}/{{ selected_order_criteria|default:'' }}{{ selected_order_key|default:'!' }}/!/"><i id="clean-search" class="fa fa-times"></i></a>
             {% endif %}
         </div>
     </form>
