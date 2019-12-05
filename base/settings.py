@@ -191,7 +191,7 @@ RQ = Queue(connection=REDIS)
 
 GOOGLE_API = config('GOOGLE_API')
 
-NAMES_URL = "http://names.sdelquin.me/random/"
+NAMES_URL = "https://names.sdelquin.me/people/random/"
 
 LOGIN_URL = "/login/"
 
