@@ -15,7 +15,6 @@ env.hosts = [PRODUCTION_HOST]
 
 def deploy():
     local('git push')
-    print(PRODUCTION_BASEDIR)
     with cd(PRODUCTION_BASEDIR):
         run('git pull')
         run('pipenv install')
