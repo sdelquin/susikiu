@@ -1,16 +1,22 @@
+import os
+
+from django.conf import settings
 from fabric.api import cd, env, get, local, run
 from fabric.contrib import django
+from prettyconf import config
 
 django.settings_module('base.settings')
-from django.conf import settings
 _ = settings.INSTALLED_APPS  # fabric bug: https://goo.gl/167WlO
 
-env.hosts = ['cloud']
+PRODUCTION_HOST = config('PRODUCTION_HOST')
+PRODUCTION_BASEDIR = config('PRODUCTION_BASEDIR')
+env.hosts = [PRODUCTION_HOST]
 
 
 def deploy():
     local('git push')
-    with cd('~/susikiu'):
+    print(PRODUCTION_BASEDIR)
+    with cd(PRODUCTION_BASEDIR):
         run('git pull')
         run('pipenv install')
         run('bower install')
@@ -37,4 +43,5 @@ def download_db():
 
 
 def download_media():
-    local('rsync -rtvu cloud:~/susikiu/media/ media/')
+    media_path = os.path.join(PRODUCTION_BASEDIR, 'media')
+    local(f'rsync -rtvu {PRODUCTION_HOST}:{media_path} media/')
