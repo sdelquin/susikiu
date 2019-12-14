@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f40bce3052680473e2badb101668b11627292e20b31b755c7c5c09f6395c4db4"
+            "sha256": "e4ece5f9451d2628b6fe014585a19431f488dfbea864e0d758b78e1430509b38"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -60,11 +60,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:83f234f52a86eb983de3616b8ff3b0368e4da1d975fa5449b08588b749e7946c",
-                "sha256:e5a1d1a831c06475c708126c6a7e0ae0e67adac9d8a7c39cf0695ad79030b9d9"
+                "sha256:52a66d7f8b036d02da0a4472359e8be1727424fc1e4b4f5c684ef97de7b569e1",
+                "sha256:c85b8c95366e187ca0581d45a6e508107ca4bd38cb45c24aa09d3572074c523d"
             ],
             "index": "pypi",
-            "version": "==1.9.6"
+            "version": "==1.11.23"
         },
         "django-bootstrap-form": {
             "hashes": [
@@ -333,14 +333,6 @@
         }
     },
     "develop": {
-        "appnope": {
-            "hashes": [
-                "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0",
-                "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"
-            ],
-            "markers": "sys_platform == 'darwin'",
-            "version": "==0.1.0"
-        },
         "backcall": {
             "hashes": [
                 "sha256:38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4",
