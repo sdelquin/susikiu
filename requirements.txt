@@ -1,0 +1,12 @@
+django==1.9.6
+redis
+django-bootstrap-form==3.2.1
+django-import-export==1.2.0
+dateparser
+pillow
+requests
+prettyconf
+rq
+psycopg2-binary
+sendgrid==5.6.0
+git+https://github.com/sdelquin/sgw.git

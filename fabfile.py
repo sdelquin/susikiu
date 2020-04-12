@@ -1,7 +1,7 @@
 import os
 
 from django.conf import settings
-from fabric.api import cd, env, get, local, run
+from fabric.api import cd, env, get, local, run, prefix
 from fabric.contrib import django
 from prettyconf import config
 
@@ -15,14 +15,15 @@ env.hosts = [PRODUCTION_HOST]
 
 def deploy():
     local('git push')
-    with cd(PRODUCTION_BASEDIR):
-        run('git pull')
-        run('pipenv install')
-        run('bower install')
-        run('pipenv run python manage.py collectstatic --noinput')
-        run('pipenv run python manage.py migrate')
-        run('supervisorctl restart rq_susikiu')
-        run('supervisorctl restart susikiu')
+    with prefix('source ~/.virtualenvs/susikiu/bin/activate'):
+        with cd(PRODUCTION_BASEDIR):
+            run('git pull')
+            run('pip install -r requirements.txt')
+            run('bower install')
+            run('python manage.py collectstatic --noinput')
+            run('python manage.py migrate')
+            run('supervisorctl restart rq_susikiu')
+            run('supervisorctl restart susikiu')
 
 
 def download_db():
