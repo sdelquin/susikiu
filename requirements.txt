@@ -7,6 +7,6 @@ pillow
 requests
 prettyconf
 rq
-psycopg2-binary
+psycopg2-binary==2.8.6
 sendgrid==5.6.0
 git+https://github.com/sdelquin/sgw.git
