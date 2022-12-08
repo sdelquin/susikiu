@@ -15,7 +15,7 @@ env.hosts = [PRODUCTION_HOST]
 
 def deploy():
     local('git push')
-    with prefix('source ~/.virtualenvs/susikiu/bin/activate'):
+    with prefix('source ~/.pyenv/versions/susikiu/bin/activate'):
         with cd(PRODUCTION_BASEDIR):
             run('git pull')
             run('pip install -r requirements.txt')
