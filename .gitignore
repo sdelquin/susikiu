@@ -12,3 +12,4 @@ dump.rdb
 .env
 static
 media
+.python-version
